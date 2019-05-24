@@ -19,7 +19,7 @@ let Product = new Schema({
   quantity: {
     type: Number,
     default: 0
-  },
+  }
 });
 
 export default mongoose.model('Product', Product);

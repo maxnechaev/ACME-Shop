@@ -1,3 +1,42 @@
-<p>
-  create works!
-</p>
+<div>
+  <mat-card>
+    <section class="mat-typography">
+      <h3>Add a new product</h3>
+    </section>
+    <!-- <mat-divider></mat-divider> -->
+    <br>
+    <form [formGroup]="createForm" class="create-form">
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Product Title" formControlName="title" #title>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Image URL" formControlName="image" #image>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <textarea matInput placeholder="Description" formControlName="description" #description rows="8" cols="80"></textarea>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Price" formControlName="price" #price>
+      </mat-form-field>
+
+      <mat-form-field class="field-full-width">
+        <input matInput placeholder="Quantity" formControlName="quantity" #quantity>
+      </mat-form-field>
+
+      <br><br>
+
+      <button mat-raised-button color="accent" routerLink="/list">Back</button>
+
+      <button type="submit"
+        mat-raised-button
+        (click)="addProduct(title.value, image.value, description.value, price.value, quantity.value)"
+        color="primary"
+        [disabled]="createForm.pristine || createForm.invalid">Add</button>
+
+    </form>
+  </mat-card>
+
+</div>
