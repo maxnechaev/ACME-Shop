@@ -5,3 +5,73 @@ table {
 .mat-column-right {
   text-align: center;
 }
+
+.products-list {
+  width: 90%;
+  padding: 30px;
+  display: block;
+  margin: auto;
+
+}
+
+.product-card {
+  display: inline-block;
+  width: 220px;
+  height: 290px;
+  margin: 10px;
+}
+
+.header-container {
+  margin: 15px;
+  width: 200px;
+  height: 30px;
+  padding: 10px;
+  display: flex;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 1em;
+}
+
+
+.image-container {
+  margin: 10px;
+  width: 150px;
+  height: 120px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-container-right{
+  /* display: inline; */
+  margin: 5px;
+  margin-right: 10px;
+
+}
+
+.price {
+  color: #666460;
+  /* font-style: oblique; */
+  float: right;
+  width: 200px;
+  background-color: #dbf0fd;
+  border-radius: 5px;
+  text-align: center;
+  padding: 3px;
+
+}
+
+.button-wrapper {
+  text-align: center;
+}

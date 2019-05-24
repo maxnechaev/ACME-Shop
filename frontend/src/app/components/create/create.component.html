@@ -7,7 +7,8 @@
     <br>
     <form [formGroup]="createForm" class="create-form">
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Product Title" formControlName="title" #title>
+        <input matInput maxlength="25" placeholder="Product Title" formControlName="title" #title>
+        <mat-hint>Max. 25 symbols</mat-hint>
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
@@ -19,11 +20,11 @@
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Price" formControlName="price" #price>
+        <input matInput type="number" placeholder="Price" formControlName="price" #price>
       </mat-form-field>
 
       <mat-form-field class="field-full-width">
-        <input matInput placeholder="Quantity" formControlName="quantity" #quantity>
+        <input matInput id="myNum" placeholder="Quantity" formControlName="quantity" #quantity>
       </mat-form-field>
 
       <br><br>

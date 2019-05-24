@@ -14,7 +14,8 @@ import {
   MatButtonModule,
   MatCardModule,
   MatTableModule,
-  MatSnackBarModule
+  MatSnackBarModule,
+  MatDialogModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
 import { ProductService } from './product.service';
+
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent},
@@ -54,9 +56,12 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatTableModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule,
+    
   ],
   providers: [ProductService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [ListComponent]
 })
 export class AppModule { }

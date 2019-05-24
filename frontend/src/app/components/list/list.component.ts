@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { MatTableDataSource } from "@angular/material";
+import { MatTableDataSource, MatCardModule, MatDialog, MatDialogConfig } from "@angular/material";
 
 import { ProductService } from "../../product.service";
 import { Product } from "../../product.model";
@@ -17,7 +17,7 @@ export class ListComponent implements OnInit {
   products: Product[];
   displayedColumns = ['title', 'image', 'price', 'actions'];
 
-  constructor(private productService: ProductService, private router: Router) { }
+  constructor(private productService: ProductService, private router: Router, private modal: MatDialog) { }
 
   ngOnInit() {
     this.fetchProducts();
@@ -41,6 +41,10 @@ export class ListComponent implements OnInit {
     this.productService.deleteProduct(id).subscribe(() => {
       this.fetchProducts();
     });
+  }
+
+  openModal() {
+    this.modal.open(this.products);
   }
 
 }

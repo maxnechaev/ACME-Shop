@@ -1,10 +1,38 @@
 <div>
-  <br>
   <mat-card>
     <button mat-raised-button color="primary" routerLink="/create">Create New Product</button>
-    <br><br>
-    <!-- <mat-divider></mat-divider> -->
+
+  </mat-card>
+
+<section class="products-list">
+  <mat-card class="product-card" *ngFor="let product of products">
+    <mat-card-header  class="header-container">
+      <mat-card-title class="card-title">{{product.title}}</mat-card-title>
+    </mat-card-header>
+    <div class="image-container">
+      <img class="product-image" mat-card-image [src]="product.image" alt="{{product.title}}">
+    </div>
+
+    <!-- <mat-card-content>
+      <p>{{product.description}}</p>
+    </mat-card-content> -->
+
     <br>
+
+    <div class="card-container-right">
+      <span class="price">Only ${{product.price}}</span>
+    </div>
+    <br><br>
+    <mat-card-actions  layout="row" layout-align="center center" class="button-wrapper">
+      <button mat-raised-button color="warn" (click)="openModal()">Add to Cart</button>
+    </mat-card-actions>
+  </mat-card>
+</section>
+
+
+
+
+
     <table mat-table [dataSource]="products">
       <ng-container matColumnDef="title">
         <th mat-header-cell *matHeaderCellDef>Title</th>
@@ -40,5 +68,5 @@
     </table>
 
 
-  </mat-card>
+
 </div>
