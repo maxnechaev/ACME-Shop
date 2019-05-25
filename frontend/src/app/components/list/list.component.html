@@ -2,31 +2,69 @@
   <mat-card>
     <button mat-raised-button color="primary" routerLink="/create">Create New Product</button>
 
+    <button mat-button routerLink="/cart">View Cart</button>
   </mat-card>
 
+<strong>Result: {{dialogResult}}</strong>
+
+
+<button [routerLink]="['/list']">Products</button>
+<button [routerLink]="['/cart']">Cart</button>
+<router-outlet></router-outlet>
+
+
+<h3>Product List</h3>
+<table border="1">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Photo</th>
+        <th>Buy</th>
+    </tr>
+    <tr *ngFor="let product of products">
+        <td>{{product._id}}</td>
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        <td>
+            <img [src]="product.image" width="50">
+        </td>
+        <td>
+            <a [routerLink]="['/cart', { id:product._id }]">Buy Now</a>
+        </td>
+    </tr>
+</table>
+
+
+
+
+
+
+
+
+
 <section class="products-list">
-  <mat-card class="product-card" *ngFor="let product of products">
+  <mat-card class="product-card" *ngFor="let product of products;">
     <mat-card-header  class="header-container">
-      <mat-card-title class="card-title">{{product.title}}</mat-card-title>
+
+      <mat-card-title class="card-title">{{product.title}} {{product._id}}</mat-card-title>
     </mat-card-header>
     <div class="image-container">
-      <img class="product-image" mat-card-image [src]="product.image" alt="{{product.title}}">
+      <img class="product-image" mat-card-image [src]="product.image" (click)="openDialog(product);" alt="{{product.title}}">
     </div>
-
-    <!-- <mat-card-content>
-      <p>{{product.description}}</p>
-    </mat-card-content> -->
 
     <br>
 
     <div class="card-container-right">
       <span class="price">Only ${{product.price}}</span>
+
     </div>
     <br><br>
     <mat-card-actions  layout="row" layout-align="center center" class="button-wrapper">
-      <button mat-raised-button color="warn" (click)="openModal()">Add to Cart</button>
+      <button mat-raised-button color="warn" (click)="openDialog(product);">Add to Cart</button>
     </mat-card-actions>
   </mat-card>
+
 </section>
 
 

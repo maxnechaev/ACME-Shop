@@ -6,6 +6,10 @@ import { MatTableDataSource, MatCardModule, MatDialog, MatDialogConfig } from "@
 import { ProductService } from "../../product.service";
 import { Product } from "../../product.model";
 
+import { ModalWindowComponent } from '../modal-window/modal-window.component';
+
+
+
 
 @Component({
   selector: 'app-list',
@@ -16,12 +20,18 @@ export class ListComponent implements OnInit {
 
   products: Product[];
   displayedColumns = ['title', 'image', 'price', 'actions'];
+  dialogResult = '';
 
-  constructor(private productService: ProductService, private router: Router, private modal: MatDialog) { }
+  constructor(private productService: ProductService, private router: Router, public dialog: MatDialog) {
+
+  }
 
   ngOnInit() {
     this.fetchProducts();
+    this.products = this.productService.findAll();
+
   }
+
 
   fetchProducts() {
     this.productService
@@ -29,7 +39,7 @@ export class ListComponent implements OnInit {
     .subscribe((data: Product[]) => {
       this.products = data;
       console.log('Data requested...');
-      console.log(this.products);
+      console.log('this.products is ', this.products);
     });
   }
 
@@ -43,8 +53,21 @@ export class ListComponent implements OnInit {
     });
   }
 
-  openModal() {
-    this.modal.open(this.products);
+  openDialog(product){
+    let dialogRef = this.dialog.open(ModalWindowComponent, {
+      data: product,
+      width: '600px',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog closed ${result}`);
+      this.dialogResult = result;
+
+    })
   }
+
+
+
+
 
 }

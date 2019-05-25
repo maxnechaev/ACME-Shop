@@ -15,7 +15,10 @@ import {
   MatCardModule,
   MatTableModule,
   MatSnackBarModule,
-  MatDialogModule
+  MatDialogModule,
+  MatTooltipModule,
+
+
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -25,12 +28,16 @@ import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
 
 import { ProductService } from './product.service';
+import { CartService } from './cart.service';
+import { ModalWindowComponent } from './components/modal-window/modal-window.component';
+import { CartComponent } from './components/cart/cart.component';
 
 
 const routes: Routes = [
   {path: 'create', component: CreateComponent},
   {path: 'edit/:id', component: EditComponent},
   {path: 'list', component: ListComponent},
+  {path: 'cart', component: CartComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'}
 ];
 
@@ -39,7 +46,9 @@ const routes: Routes = [
     AppComponent,
     ListComponent,
     CreateComponent,
-    EditComponent
+    EditComponent,
+    ModalWindowComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -58,10 +67,10 @@ const routes: Routes = [
     MatTableModule,
     MatSnackBarModule,
     MatDialogModule,
-    
+    MatTooltipModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
-  entryComponents: [ListComponent]
+  entryComponents: [ModalWindowComponent]
 })
 export class AppModule { }
