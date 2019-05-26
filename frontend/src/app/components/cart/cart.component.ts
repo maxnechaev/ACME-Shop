@@ -16,8 +16,6 @@ import { BehaviorSubject, Observable, Subject, Subscriber, of } from 'rxjs';
 })
 export class CartComponent implements OnInit {
 
-
-
   addedProducts$: any;
   addedProducts: Product[] = [];
 
@@ -26,12 +24,11 @@ export class CartComponent implements OnInit {
 
   @Input() public item: CartItem;
 
-
+  displayedColumns: string[] = ['image', 'title', 'price', 'actions'];
 
   constructor(
     private activatedRoute: ActivatedRoute,
 		private productService: ProductService,
-
 
   ) {
 
@@ -42,12 +39,12 @@ export class CartComponent implements OnInit {
 
   }
 
-  // public getTotal(): Observable<number> {
-  //   return this.productService.getTotalAmount();
-  // }
+  getTotalCost() {
+      return this.itemsInCart.map(t => t.price).reduce((acc, value) => acc + value, 0);
+    }
 
   public removeItem(item: Product) {
-    this.productService.removeFromCart(item)
+    this.productService.removeFromCart(item);
   }
 
 

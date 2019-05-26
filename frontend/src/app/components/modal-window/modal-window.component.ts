@@ -18,9 +18,6 @@ export class ModalWindowComponent implements OnInit {
   selectedProducts: Product[] = [];
 
 
-  // selectedProducts = [];
-
-
   constructor(
     public dialogRef: MatDialogRef<ModalWindowComponent>,
     @Inject(MAT_DIALOG_DATA) public data: string,
@@ -41,18 +38,6 @@ export class ModalWindowComponent implements OnInit {
   checkSelectedProducts(){
     console.log(this.selectedProducts);
   }
-
-
-  // addProduct(title, image, description, price, quantity){
-  //   const product = {
-  //     title,
-  //     image,
-  //     description,
-  //     price,
-  //     quantity
-  //   }
-  //   return this.http.post(`http://127.0.0.1:3000/cart`, product);
-  // }
 
 
   onCloseConfirm(data){

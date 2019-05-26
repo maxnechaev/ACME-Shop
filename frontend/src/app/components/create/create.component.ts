@@ -17,7 +17,8 @@ export class CreateComponent implements OnInit {
       title: ['', Validators.required],
       image: '',
       description: '',
-      price: ''
+      price: Number,
+      quantity: Number,
     })
   }
 

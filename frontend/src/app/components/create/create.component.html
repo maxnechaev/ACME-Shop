@@ -1,43 +1,50 @@
-<div>
-  <mat-card>
-    <section class="mat-typography">
-      <h3>Add a new product</h3>
-    </section>
-    <!-- <mat-divider></mat-divider> -->
-    <br>
-    <form [formGroup]="createForm" class="create-form">
-      <mat-form-field class="field-full-width">
-        <input matInput maxlength="25" placeholder="Product Title" formControlName="title" #title>
-        <mat-hint>Max. 25 symbols</mat-hint>
-      </mat-form-field>
 
-      <mat-form-field class="field-full-width">
-        <input matInput placeholder="Image URL" formControlName="image" #image>
-      </mat-form-field>
+<mat-card>
+  <button mat-raised-button routerLink="/create">Create New Product</button>
+  <button mat-raised-button routerLink="/">Back to the Shop</button>
+  <button mat-raised-button routerLink="/cart">View Cart</button>
+</mat-card>
 
-      <mat-form-field class="field-full-width">
-        <textarea matInput placeholder="Description" formControlName="description" #description rows="8" cols="80"></textarea>
-      </mat-form-field>
+<mat-card>
+  <section class="mat-typography">
+    <h3>Add a new product to database</h3>
+  </section>
+  <br>
+  <form [formGroup]="createForm" class="create-form">
+    <mat-form-field class="field-full-width">
+      <input matInput maxlength="25" placeholder="Product Title" formControlName="title" #title>
+      <mat-hint>Max. 25 symbols</mat-hint>
+    </mat-form-field>
 
-      <mat-form-field class="field-full-width">
-        <input matInput type="number" placeholder="Price" formControlName="price" #price>
-      </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <input matInput placeholder="Image URL" formControlName="image" #image>
+    </mat-form-field>
 
-      <mat-form-field class="field-full-width">
-        <input matInput id="myNum" placeholder="Quantity" formControlName="quantity" #quantity>
-      </mat-form-field>
+    <mat-form-field class="field-full-width">
+      <textarea matInput maxlength="500" placeholder="Description" formControlName="description" #description rows="8" cols="80"></textarea>
+      <mat-hint>Max. 500 symbols</mat-hint>
+    </mat-form-field>
 
-      <br><br>
+    <mat-form-field class="field-full-width">
+      <input matInput type="number" placeholder="Price" formControlName="price" #price>
+    </mat-form-field>
 
-      <button mat-raised-button color="accent" routerLink="/list">Back</button>
+    <mat-form-field class="field-full-width">
+      <input matInput type="number" placeholder="Quantity" formControlName="quantity" #quantity>
+    </mat-form-field>
 
-      <button type="submit"
-        mat-raised-button
-        (click)="addProduct(title.value, image.value, description.value, price.value, quantity.value)"
-        color="primary"
-        [disabled]="createForm.pristine || createForm.invalid">Add</button>
 
-    </form>
-  </mat-card>
 
-</div>
+    <br><br>
+    <div class="button-wrapper">
+      <button class="button" mat-raised-button color="accent" routerLink="/list">Back</button>
+
+      <button class="button" type="submit"
+      mat-raised-button
+      (click)="addProduct(title.value, image.value, description.value, price.value, quantity.value)"
+      color="primary"
+      [disabled]="createForm.pristine || createForm.invalid">Add</button>
+    </div>
+
+  </form>
+</mat-card>

@@ -62,9 +62,8 @@ export class ListComponent implements OnInit {
     })
   }
 
-  public addToCart(product: Product){
+  addToCart(product: Product){
     this.productService.addToCart(product);
-    // console.log('Hello from ListComponent addToCart');
   }
 
 

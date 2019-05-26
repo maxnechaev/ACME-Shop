@@ -1,14 +1,11 @@
 <div>
   <mat-card>
-    <button mat-raised-button color="primary" routerLink="/create">Create New Product</button>
-
-    <button mat-button routerLink="/cart">View Cart</button>
+    <button mat-raised-button routerLink="/create">Create New Product</button>
+    <button mat-raised-button routerLink="/">Back to the Shop</button>
+    <button mat-raised-button routerLink="/cart">View Cart</button>
   </mat-card>
 
-<strong>Result: {{dialogResult}}</strong>
 
-<button [routerLink]="['/list']">Products</button>
-<button [routerLink]="['/cart']">Cart</button>
 <router-outlet></router-outlet>
 
 
@@ -17,7 +14,7 @@
   <mat-card class="product-card" *ngFor="let product of products;">
     <mat-card-header  class="header-container">
 
-      <mat-card-title class="card-title">{{product.title}} {{product._id}}</mat-card-title>
+      <mat-card-title class="card-title">{{product.title}}</mat-card-title>
     </mat-card-header>
     <div class="image-container">
       <img class="product-image" mat-card-image [src]="product.image" (click)="openDialog(product);" alt="{{product.title}}">
