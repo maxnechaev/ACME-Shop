@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from "@angular/forms";
+import { FormsModule } from '@angular/forms';
 
 import {
   MatToolbarModule,
@@ -31,6 +32,7 @@ import { ProductService } from './product.service';
 import { CartService } from './cart.service';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { CartComponent } from './components/cart/cart.component';
+import { SendEmailComponent } from './components/send-email/send-email.component';
 
 
 const routes: Routes = [
@@ -38,6 +40,7 @@ const routes: Routes = [
   {path: 'edit/:id', component: EditComponent},
   {path: 'list', component: ListComponent},
   {path: 'cart', component: CartComponent},
+  {path: 'send-email', component: SendEmailComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'}
 ];
 
@@ -48,7 +51,8 @@ const routes: Routes = [
     CreateComponent,
     EditComponent,
     ModalWindowComponent,
-    CartComponent
+    CartComponent,
+    SendEmailComponent
   ],
   imports: [
     BrowserModule,
@@ -67,7 +71,8 @@ const routes: Routes = [
     MatTableModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent],
