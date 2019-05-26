@@ -9,18 +9,11 @@ import { ListComponent } from './components/list/list.component';
 export class CartService {
 
 
-  // uri = 'http://127.0.0.1:3000';
+  constructor(
+    private http: HttpClient,
+    public product: Product,
 
-  constructor(private http: HttpClient, public product: Product, private products: ListComponent) {
-
-
-
-  }
-
-  // addProductToCart(product){
-  //   product = this.product;
-  //   return this.http.post(`${this.uri}/cart`, product);
-  // }
+  ) { }
 
 
 }

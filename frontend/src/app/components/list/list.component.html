@@ -7,39 +7,9 @@
 
 <strong>Result: {{dialogResult}}</strong>
 
-
 <button [routerLink]="['/list']">Products</button>
 <button [routerLink]="['/cart']">Cart</button>
 <router-outlet></router-outlet>
-
-
-<h3>Product List</h3>
-<table border="1">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Photo</th>
-        <th>Buy</th>
-    </tr>
-    <tr *ngFor="let product of products">
-        <td>{{product._id}}</td>
-        <td>{{product.title}}</td>
-        <td>{{product.price}}</td>
-        <td>
-            <img [src]="product.image" width="50">
-        </td>
-        <td>
-            <a [routerLink]="['/cart', { id:product._id }]">Buy Now</a>
-        </td>
-    </tr>
-</table>
-
-
-
-
-
-
 
 
 
@@ -61,13 +31,12 @@
     </div>
     <br><br>
     <mat-card-actions  layout="row" layout-align="center center" class="button-wrapper">
-      <button mat-raised-button color="warn" (click)="openDialog(product);">Add to Cart</button>
+      <!-- <button mat-raised-button color="warn" (click)="openDialog(product);">Add to Cart</button> -->
+      <button mat-raised-button color="warn" (click)="addToCart(product);">Add to Cart</button>
     </mat-card-actions>
   </mat-card>
 
 </section>
-
-
 
 
 

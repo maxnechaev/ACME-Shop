@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MatTableDataSource, MatCardModule, MatDialog, MatDialogConfig } from "@angular/material";
@@ -7,8 +7,6 @@ import { ProductService } from "../../product.service";
 import { Product } from "../../product.model";
 
 import { ModalWindowComponent } from '../modal-window/modal-window.component';
-
-
 
 
 @Component({
@@ -22,25 +20,24 @@ export class ListComponent implements OnInit {
   displayedColumns = ['title', 'image', 'price', 'actions'];
   dialogResult = '';
 
-  constructor(private productService: ProductService, private router: Router, public dialog: MatDialog) {
-
-  }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    public dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.fetchProducts();
-    this.products = this.productService.findAll();
 
   }
 
-
   fetchProducts() {
     this.productService
-    .getProducts()
-    .subscribe((data: Product[]) => {
-      this.products = data;
-      console.log('Data requested...');
-      console.log('this.products is ', this.products);
-    });
+      .getProducts()
+      .subscribe((data: Product[]) => {
+        this.products = data;
+        console.log('this.products is ', this.products);
+      });
   }
 
   editProduct(id) {
@@ -53,17 +50,21 @@ export class ListComponent implements OnInit {
     });
   }
 
-  openDialog(product){
+  openDialog(product) {
     let dialogRef = this.dialog.open(ModalWindowComponent, {
       data: product,
       width: '600px',
     });
-
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog closed ${result}`);
+      console.log(`Dialog closed ${JSON.stringify(result)}`);
       this.dialogResult = result;
 
     })
+  }
+
+  public addToCart(product: Product){
+    this.productService.addToCart(product);
+    // console.log('Hello from ListComponent addToCart');
   }
 
 
