@@ -27,7 +27,7 @@ export class ModalWindowComponent implements OnInit {
     this.dialogRef.close('Cancel');
   }
 
-  onCloseConfirm(item: Product){
+  onCloseConfirm(item){
       this.productService.addToCart(item);
       this.dialogRef.close('Added');
   }

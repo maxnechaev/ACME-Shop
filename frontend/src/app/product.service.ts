@@ -42,15 +42,15 @@ export class ProductService {
     return this.http.get(`${this.uri}/products`);
   }
 
-  getProductById(id: String){
+  getProductById(id){
     return this.http.get(`${this.uri}/products/${id}`);
   }
 
-  findIdByProductArray(arr: Array<any>){
+  findIdByProductArray(arr){
     return arr.map(a => a._id);
   }
 
-  deductQuantity(arr: Array<any>, idArr: Array<any>) {
+  deductQuantity(arr, idArr) {
     idArr.forEach(function(id){
       let obj = arr.find(x => x._id === id);
       obj.quantity = obj.quantity - 1;
@@ -59,7 +59,7 @@ export class ProductService {
   }
 
 
-  addProduct(title: string, image: string, description: string, price: number, quantity: number){
+  addProduct(title, image, description, price, quantity){
     const product = {
       title,
       image,
@@ -70,7 +70,7 @@ export class ProductService {
     return this.http.post(`${this.uri}/products/add`, product);
   }
 
-  updateProduct(id: String, title: String, image: String, description: String, price: number, quantity: number){
+  updateProduct(id, title, image, description, price, quantity){
     const product = {
       title,
       image,
@@ -81,7 +81,7 @@ export class ProductService {
     return this.http.post(`${this.uri}/products/update/${id}`, product);
   }
 
-  deleteProduct(id: string) {
+  deleteProduct(id) {
     return this.http.get(`${this.uri}/products/delete/${id}`);
   }
 

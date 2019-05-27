@@ -33,7 +33,7 @@ export class ListComponent implements OnInit {
       });
   }
 
-  openDialog(product: Product) {
+  openDialog(product) {
     let dialogRef = this.dialog.open(ModalWindowComponent, {
       data: product,
       width: '600px',
@@ -44,7 +44,7 @@ export class ListComponent implements OnInit {
     })
   }
 
-  addToCart(product: Product){
+  addToCart(product){
     this.productService.addToCart(product);
   }
 
