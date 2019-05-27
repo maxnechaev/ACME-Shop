@@ -22,7 +22,7 @@ export class CreateComponent implements OnInit {
     })
   }
 
-  addProduct(title, image, description, price, quantity){
+  addProduct(title: string, image: string, description: string, price: number, quantity: number){
     this.productService.addProduct(title, image, description, price, quantity).subscribe(() => {
       this.router.navigate(['/list']);
     });

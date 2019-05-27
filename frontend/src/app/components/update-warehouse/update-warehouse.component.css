@@ -1,7 +1,23 @@
+h3 {
+  text-align: center;
+}
+
 table {
-  width: 60%;
+  width: 80%;
   margin-left: auto;
   margin-right: auto;
+}
+
+.mat-cell {
+  padding: 10px;
+}
+
+.mat-column-right {
+  text-align: center;
+}
+
+.mat-column-description {
+  max-width: 400px;
 }
 
 .mat-column-title,
@@ -17,10 +33,4 @@ table {
 .thumbImg {
   border-radius: 10px;
   margin: 10px;
-}
-
-.empty_cart {
-  position: relative;
-  top: 100px;
-  text-align: center;
 }

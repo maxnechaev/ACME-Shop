@@ -3,7 +3,6 @@
     <section class="mat-typography">
       <h3>Update Product</h3>
     </section>
-    <!-- <mat-divider></mat-divider> -->
     <br>
     <form [formGroup]="updateForm" class="edit-form">
       <mat-form-field class="field-full-width">
@@ -25,18 +24,15 @@
       <mat-form-field class="field-full-width">
         <input matInput placeholder="Quantity" formControlName="quantity" #quantity>
       </mat-form-field>
-
+      
       <br><br>
 
-      <button mat-raised-button color="accent" routerLink="/list">Back</button>
-
+      <button mat-raised-button color="accent" routerLink="/update-warehouse">Back</button>
       <button type="submit"
         mat-raised-button
         (click)="updateProduct(title.value, image.value, description.value, price.value, quantity.value)"
         color="primary"
         [disabled]="updateForm.pristine || updateForm.invalid">Update and save</button>
-
     </form>
   </mat-card>
-
 </div>

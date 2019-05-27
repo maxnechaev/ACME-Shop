@@ -1,10 +1,3 @@
-
-<mat-card>
-  <button mat-raised-button routerLink="/create">Create New Product</button>
-  <button mat-raised-button routerLink="/">Back to the Shop</button>
-  <button mat-raised-button routerLink="/cart">View Cart</button>
-</mat-card>
-
 <mat-card>
   <section class="mat-typography">
     <h3>Add a new product to database</h3>
@@ -33,8 +26,6 @@
       <input matInput type="number" placeholder="Quantity" formControlName="quantity" #quantity>
     </mat-form-field>
 
-
-
     <br><br>
     <div class="button-wrapper">
       <button class="button" mat-raised-button color="accent" routerLink="/list">Back</button>
@@ -45,6 +36,5 @@
       color="primary"
       [disabled]="createForm.pristine || createForm.invalid">Add</button>
     </div>
-
   </form>
 </mat-card>

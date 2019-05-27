@@ -1,13 +1,3 @@
-
-
-<mat-card>
-  <button mat-raised-button routerLink="/create">Create New Product</button>
-  <button mat-raised-button routerLink="/">Back to the Shop</button>
-  <button mat-raised-button routerLink="/cart">View Cart</button>
-</mat-card>
-
-
-
 <div *ngIf="itemsInCart?.length > 0; else empty_cart">
   <p class="summary">You have {{itemsInCart.length}} items in your cart</p>
 
@@ -44,7 +34,30 @@
   </table>
 
 
-<app-send-email></app-send-email>
+  <!-- <div *ngFor="let cartItem of itemsInCart" class="cart-list-item">
+    <img class="thumbImg" [src]="cartItem.image" width="100px;">
+    <div class="cart-list-value cart-list-name-value">
+      {{cartItem.title}}
+    </div>
+    <div class="cart-list-value cart-list-quantity-value">
+      <button type="button" class="cart-increase-button" (click)="increase(cartItem)">
+        +
+      </button>
+      <span class="cart-list-quantity-content">{{cartItem.getQuantity()}}</span>
+      <button type="button" class="cart-decrease-button" (click)="decrease(cartItem)">
+        -
+      </button>
+    </div>
+    <div class="cart-list-value cart-list-price-value">
+      {{cartItem.price}}
+    </div>
+    <div class="cart-list-value cart-list-total-value">
+      cartItem.total
+    </div>
+  </div> -->
+
+
+  <app-send-email></app-send-email>
 
 </div>
 
@@ -54,7 +67,3 @@
     <button mat-raised-button color="primary" routerLink="/">Go Shopping!</button>
   </div>
 </ng-template>
-
-
-
-<router-outlet></router-outlet>

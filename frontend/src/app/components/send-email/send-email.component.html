@@ -1,24 +1,26 @@
-<form style="width: 50%; margin: auto">
-  <mat-card>
-    <h1>Send Form</h1>
+<div class="form-wrapper">
+  <form style="width: 50%; margin: auto;">
+    <mat-card style="text-align: center; background-color: #CAECFF; border: 1px solid black;">
+      <h3>Enter your e-mail to receive this order</h3>
 
-    <mat-form-field style="width: 100%">
-      <input matInput placeholder="Email" [formControl]="emailFormControl"/>
-      <mat-error *ngIf="emailFormControl.hasError('email')">
-        Please enter a valid email address
-      </mat-error>
-      <mat-error *ngIf="emailFormControl.hasError('required')">
-        Email is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field style="width: 100%">
+        <input matInput placeholder="Email" [formControl]="emailFormControl"/>
+        <mat-error *ngIf="emailFormControl.hasError('email')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
 
-    <button
-      mat-raised-button
-      [disabled]="emailFormControl.invalid || loading"
-      color="primary"
-      (click)="sendEmail()"
-    >
-      {{buttionText}}
-    </button>
-  </mat-card>
-</form>
+      <button
+        mat-raised-button
+        [disabled]="emailFormControl.invalid || loading"
+        color="primary"
+        (click)="sendEmail()"
+        >
+        {{buttionText}}
+      </button>
+    </mat-card>
+  </form>
+</div>

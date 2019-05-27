@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Product } from "./product.model";
-import { BehaviorSubject, Observable, Subject, Subscriber, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,12 @@ export class ProductService {
   public itemsInCart: Product[] = [];
 
   constructor(private http: HttpClient) {
-
     this.products = this.getProducts();
     this.itemsInCartSubject.subscribe(_ => this.itemsInCart = _);
-
   }
 
   public addToCart(item: Product) {
     this.itemsInCartSubject.next([...this.itemsInCart, item]);
-    // console.log('Hello from ProductService addToCart');
     console.log('itemsInCart is', this.itemsInCart);
     console.log('itemsInCart length is', this.itemsInCart. length);
   }
@@ -37,32 +34,32 @@ export class ProductService {
     return this.itemsInCartSubject.asObservable();
   }
 
-  // public getTotalAmount(): Observable<number> {
-  //   return this.itemsInCartSubject.map((items: Product[]) => {
-  //     return items.reduce((prev, curr: Product) => {
-  //       return prev + curr.price;
-  //     }, 0);
-  //   });
+  // private cartProducts(): Observable<any> {
+  //   return this.http.get(`${this.uri}/products`);
   // }
-
-
-  private cartProducts(): Observable<any> {
-    return this.http.get(`${this.uri}/products`);
-  }
-
-
 
   getProducts(){
     return this.http.get(`${this.uri}/products`);
   }
 
-  getProductById(id){
+  getProductById(id: String){
     return this.http.get(`${this.uri}/products/${id}`);
   }
 
+  findIdByProductArray(arr: Array<any>){
+    return arr.map(a => a._id);
+  }
+
+  deductQuantity(arr: Array<any>, idArr: Array<any>) {
+    idArr.forEach(function(id){
+      let obj = arr.find(x => x._id === id);
+      obj.quantity = obj.quantity - 1;
+    })
+    return arr;
+  }
 
 
-  addProduct(title, image, description, price, quantity){
+  addProduct(title: string, image: string, description: string, price: number, quantity: number){
     const product = {
       title,
       image,
@@ -73,7 +70,7 @@ export class ProductService {
     return this.http.post(`${this.uri}/products/add`, product);
   }
 
-  updateProduct(id, title, image, description, price, quantity){
+  updateProduct(id: String, title: String, image: String, description: String, price: number, quantity: number){
     const product = {
       title,
       image,
@@ -84,7 +81,7 @@ export class ProductService {
     return this.http.post(`${this.uri}/products/update/${id}`, product);
   }
 
-  deleteProduct(id) {
+  deleteProduct(id: string) {
     return this.http.get(`${this.uri}/products/delete/${id}`);
   }
 

@@ -1,76 +1,19 @@
-<div>
-  <mat-card>
-    <button mat-raised-button routerLink="/create">Create New Product</button>
-    <button mat-raised-button routerLink="/">Back to the Shop</button>
-    <button mat-raised-button routerLink="/cart">View Cart</button>
-  </mat-card>
-
-
-<router-outlet></router-outlet>
-
-
-
 <section class="products-list">
   <mat-card class="product-card" *ngFor="let product of products;">
-    <mat-card-header  class="header-container">
-
+    <mat-card-header class="header-container">
       <mat-card-title class="card-title">{{product.title}}</mat-card-title>
     </mat-card-header>
+
     <div class="image-container">
       <img class="product-image" mat-card-image [src]="product.image" (click)="openDialog(product);" alt="{{product.title}}">
     </div>
-
     <br>
-
-    <div class="card-container-right">
+    <mat-card-content class="card-container-right">
       <span class="price">Only ${{product.price}}</span>
-
-    </div>
-    <br><br>
-    <mat-card-actions  layout="row" layout-align="center center" class="button-wrapper">
-      <!-- <button mat-raised-button color="warn" (click)="openDialog(product);">Add to Cart</button> -->
-      <button mat-raised-button color="warn" (click)="addToCart(product);">Add to Cart</button>
+    </mat-card-content>
+    <br>
+    <mat-card-actions class="button-wrapper" layout="row" layout-align="center center">
+      <button mat-raised-button color="warn" (click)="openDialog(product);">Add to Cart</button>
     </mat-card-actions>
   </mat-card>
-
 </section>
-
-
-
-    <table mat-table [dataSource]="products">
-      <ng-container matColumnDef="title">
-        <th mat-header-cell *matHeaderCellDef>Title</th>
-        <td mat-cell *matCellDef="let product"> {{product.title}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="image">
-        <th mat-header-cell *matHeaderCellDef>Image</th>
-        <td mat-cell *matCellDef="let product"><img [src]="product.image" width="100px;"></td>
-      </ng-container>
-
-      <ng-container matColumnDef="description">
-        <th mat-header-cell *matHeaderCellDef>Description</th>
-        <td mat-cell *matCellDef="let product"> {{product.description}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="price">
-        <th mat-header-cell *matHeaderCellDef>Price</th>
-        <td mat-cell *matCellDef="let product"> {{product.price}} </td>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef class="mat-column-right">Actions</th>
-        <td mat-cell *matCellDef="let product" class="mat-column-right">
-          <button mat-button color="primary" (click)="editProduct(product._id)">Edit</button>
-          <button mat-button color="warn" (click)="deleteProduct(product._id)">Delete</button>
-        </td>
-      </ng-container>
-
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-    </table>
-
-
-
-</div>

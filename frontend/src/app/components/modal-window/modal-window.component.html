@@ -1,20 +1,13 @@
-<div>
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{data.title}}</mat-card-title>
+<mat-card>
+  <h2>{{data.title}}</h2>
+  <span class="price">Price: <strong>${{data.price}}</strong></span>
+  <img class="product-image" mat-card-image [src]="data.image">
+  <div class="container">
+    <p style="text-align: justify;">{{data.description}}</p>
+  </div>
 
-    </mat-card-header>
-
-    <img class="product-image" mat-card-image [src]="data.image">
-    <mat-card-content class="container">
-
-      <p style="text-align: center;">{{data.description}}</p>
-
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button color="primary" (click)="onCloseCancel()">Cancel</button>
-      <button mat-raised-button color="warn" (click)="onCloseConfirm(data)">Add to Cart</button>
-      
-    </mat-card-actions>
-  </mat-card>
-</div>
+  <div>
+    <button mat-raised-button class="card-actions" color="warn" (click)="onCloseConfirm(data)">Add to Cart</button>
+    <button mat-button class="card-actions" color="primary" (click)="onCloseCancel()">Cancel</button>
+  </div>
+</mat-card>

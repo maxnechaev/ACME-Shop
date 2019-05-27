@@ -17,9 +17,7 @@ import {
   MatTableModule,
   MatSnackBarModule,
   MatDialogModule,
-  MatTooltipModule,
-
-
+  MatTooltipModule
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
@@ -27,13 +25,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './components/list/list.component';
 import { CreateComponent } from './components/create/create.component';
 import { EditComponent } from './components/edit/edit.component';
-
 import { ProductService } from './product.service';
-import { CartService } from './cart.service';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SendEmailComponent } from './components/send-email/send-email.component';
 import './components/send-email/send-email-template.html';
+import { UpdateWarehouseComponent } from './components//update-warehouse/update-warehouse.component';
 
 
 const routes: Routes = [
@@ -42,6 +39,7 @@ const routes: Routes = [
   {path: 'list', component: ListComponent},
   {path: 'cart', component: CartComponent},
   {path: 'send-email', component: SendEmailComponent},
+  {path: 'update-warehouse', component: UpdateWarehouseComponent},
   {path: '', redirectTo: 'list', pathMatch: 'full'}
 ];
 
@@ -53,7 +51,8 @@ const routes: Routes = [
     EditComponent,
     ModalWindowComponent,
     CartComponent,
-    SendEmailComponent
+    SendEmailComponent,
+    UpdateWarehouseComponent
   ],
   imports: [
     BrowserModule,

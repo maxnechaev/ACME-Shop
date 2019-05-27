@@ -136,8 +136,6 @@ router.route('/send-email').post((req, res) => {
     });
   };
 
-
-
   let transporter = nodeMailer.createTransport({
     host: "smtp.mail.ru",
     port: 465,
@@ -149,34 +147,55 @@ router.route('/send-email').post((req, res) => {
   });
 
   readHTMLFile('../frontend/src/app/components/send-email/send-email-template.html', function(err, html) {
-    let template = hbs.compile(html);
+    // let template = hbs.compile(html);
+    // let htmlToSend = template(replacements);
 
-    let string = '';
+    let string = '<table>';
     let total = 0;
     let generateHTML = function(){
       user.order.forEach((item) => {
-        string += `<p>${item.title} - \$${item.price}</p>`;
+        string +=
+        `
+
+
+          <tr>
+            <td style="width: 120px;"><img src='${item.image}' style='width: 50px; border-radius: 5px;' /></td>
+            <td style="width: 120px;"><span style='margin: 10px;'>${item.title}</span></td>
+            <td style="width: 120px;"><span style='margin: 10px;'>\$${item.price}</span></td>
+          </tr>
+        `;
         total += item.price;
       });
-        string += `<p><strong>Total = \$${total}</p></strong>`;
+        string += `
+
+        <tr>
+          <td style="width: 120px;"></td>
+          <td style="width: 120px;"><strong>   Total = </strong></td>
+          <td style="width: 120px;"><strong>\$${total}</strong></td>
+        </tr>
+      </table>
+
+        `;
       return string;
     };
 
     let generatedHTML = generateHTML();
 
-    let htmlToSend = template(user.order);
+
     let mailOptions = {
       from: '"ACME Shop"<acmeshop@list.ru>', // sender email address
       to: user.email, // receiver email address
       subject: "Your order from ACME", // email subject
       html: `
-      <h3>Thanks for your order at ACME Shop!</h3>
-
+      <h3>
+        <img width="50" alt="ACME Logo" style="padding: 10px;" src="https://www.acmediecast.com/assets/images/ACME_logo_200.png">
+        Greetings from ACME Shop!
+      </h3>
+      <h4>Thank you for shopping with us.</h4>
+      <br>
       <p><strong>Here is what you purchased:</strong></p>
-
       ${generatedHTML}
-
-      <p>Come back soon!</p>
+      <h4><i>Come back soon!</i></h4>
       `, // email html template
 
     };

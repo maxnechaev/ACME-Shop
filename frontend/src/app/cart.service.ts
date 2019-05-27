@@ -1,19 +1,75 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Product } from "./product.model";
-import { ListComponent } from './components/list/list.component';
+// import { EventEmitter } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CartService {
+export abstract class CartService {
 
 
   constructor(
-    private http: HttpClient,
     public product: Product,
 
   ) { }
+  // abstract setQuantity(quantity: number): void;
+  //
+  // abstract getQuantity(): number;
+  //
+  // abstract getPrice(): number;
+  //
+  // public total(): number {
+  //   return this.getPrice() * this.getQuantity();
+  // }
+  //
+  // change: 'items';
+  //
+  //
+  //
+  // public onItemAdded: EventEmitter<any> = new EventEmitter<any>();
+  //
+  // public onItemRemoved: EventEmitter<any> = new EventEmitter<any>();
+  //
+  // public onItemsChanged: EventEmitter<number> = new EventEmitter<number>();
+  //
+  // public abstract getItem(id: any): any;
+  //
+  // public abstract getItems(): any[];
+  //
+  // public abstract addItem(item: any): void;
+  //
+  // public abstract removeItem(id: any): void;
+  //
+  // public abstract itemCount(): number;
+  //
+  // public abstract entries(): number;
+  //
+  // public abstract cost(): number;
+  //
+  // public abstract clear(): void;
+  //
+  // public totalCost(): number {
+  //   return this.cost();
+  // }
+  //
+  // public toObject(): any {
+  //   return {
+  //     items: this.getItems()
+  //   };
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 }

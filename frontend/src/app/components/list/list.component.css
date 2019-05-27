@@ -1,17 +1,8 @@
-table {
-  width: 100%;
-}
-
-.mat-column-right {
-  text-align: center;
-}
-
 .products-list {
   width: 90%;
   padding: 30px;
   display: block;
   margin: auto;
-
 }
 
 .product-card {
@@ -21,22 +12,26 @@ table {
   margin: 10px;
 }
 
+.product-card:hover {
+  box-shadow: 4px 4px #888888;
+}
+
 .header-container {
-  margin: 15px;
+  margin: 10px;
   width: 200px;
   height: 30px;
   padding: 10px;
-  display: flex;
-  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-title {
   font-size: 1em;
+  text-align: center;
 }
 
-
 .image-container {
-  margin: 10px;
   width: 150px;
   height: 120px;
   display: block;
@@ -53,23 +48,14 @@ table {
   margin-right: auto;
 }
 
-.card-container-right{
-  /* display: inline; */
-  margin: 5px;
-  margin-right: 10px;
-
-}
-
 .price {
   color: #666460;
-  /* font-style: oblique; */
   float: right;
   width: 200px;
   background-color: #dbf0fd;
   border-radius: 5px;
   text-align: center;
   padding: 3px;
-
 }
 
 .button-wrapper {

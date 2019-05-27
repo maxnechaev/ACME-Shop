@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { MatSnackBar } from '@angular/material';
-
 import { ProductService } from "../../product.service";
 
-import { Product } from "../../product.model";
 
 @Component({
   selector: 'app-edit',
@@ -18,7 +16,12 @@ export class EditComponent implements OnInit {
   product: any = {};
   updateForm: FormGroup;
 
-  constructor(private productService: ProductService, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar, private fb: FormBuilder) {
+  constructor(
+    private productService: ProductService,
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar,
+    private fb: FormBuilder
+  ) {
     this.createForm();
   }
 
@@ -46,7 +49,7 @@ export class EditComponent implements OnInit {
     })
   }
 
-  updateProduct(title, image, description, price, quantity){
+  updateProduct(title: string, image: string, description: string, price: number, quantity: number){
     this.productService.updateProduct(this.id, title, image, description, price, quantity).subscribe(() => {
       this.snackBar.open('Product updated successfully!', 'OK', {
         duration: 3000
