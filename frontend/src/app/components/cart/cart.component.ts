@@ -20,7 +20,7 @@ export class CartComponent implements OnInit {
   addedProducts$: any;
   addedProducts: Product[] = [];
 
-  itemsInCart: Product[] = [];
+  public itemsInCart: Product[] = [];
 
 
   @Input() public item: CartItem;

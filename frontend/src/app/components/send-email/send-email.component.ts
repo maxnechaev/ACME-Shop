@@ -3,6 +3,8 @@ import { FormsModule, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from "@angular/common/http";
 import { CartComponent } from '../cart/cart.component';
 import { Product } from '../../product.model';
+import { ProductService } from "../../product.service";
+
 
 @Component({
   selector: 'app-send-email',
@@ -11,18 +13,26 @@ import { Product } from '../../product.model';
 })
 export class SendEmailComponent implements OnInit {
 
-  @Input() itemsInCart;
+  // @Input() itemsInCart;
+  public itemsInCart: Product[] = [];
   loading = false;
   buttionText = "Submit";
+
+
 
   emailFormControl = new FormControl("", [
     Validators.required,
     Validators.email
   ]);
 
-  constructor(private http: HttpClient, private order: CartComponent) { }
+  constructor(private http: HttpClient, private productService: ProductService) { }
 
   ngOnInit() {
+    this.productService.itemsInCartSubject.subscribe(_ => this.itemsInCart = _);
+
+
+    console.log('this.itemsInCart type is', typeof this.itemsInCart);
+
   }
 
 
@@ -30,18 +40,17 @@ export class SendEmailComponent implements OnInit {
   this.loading = true;
   this.buttionText = "Submiting...";
   let user = {
-    order: this.order.itemsInCart,
+    order: this.itemsInCart,
     email: this.emailFormControl.value
   }
+  // console.log('user.order is ', user.order);
   this.http.post("http://127.0.0.1:3000/send-email", user).subscribe(
     data => {
       let res:any = data;
       console.log(
         `👏 > 👏 > 👏 > 👏 ${user.email} is successfully registered and mail has been sent and the message id is ${res.messageId}`
       );
-      console.log('user.order1 is ',
-      Object.keys(user.order)
-    );
+
     },
     err => {
       console.log(err);
@@ -50,7 +59,7 @@ export class SendEmailComponent implements OnInit {
     },() => {
       this.loading = false;
       this.buttionText = "Submit";
-      console.log('user.order2 is ');
+
     }
   );
 }

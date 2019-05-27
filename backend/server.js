@@ -137,6 +137,7 @@ router.route('/send-email').post((req, res) => {
   };
 
 
+
   let transporter = nodeMailer.createTransport({
     host: "smtp.mail.ru",
     port: 465,
@@ -149,16 +150,35 @@ router.route('/send-email').post((req, res) => {
 
   readHTMLFile('../frontend/src/app/components/send-email/send-email-template.html', function(err, html) {
     let template = hbs.compile(html);
-    let replacements = {
-      username: 'njsadnfk',
-      password: 'saklnfdlan'
+
+    let string = '';
+    let total = 0;
+    let generateHTML = function(){
+      user.order.forEach((item) => {
+        string += `<p>${item.title} - \$${item.price}</p>`;
+        total += item.price;
+      });
+        string += `<p><strong>Total = \$${total}</p></strong>`;
+      return string;
     };
-    let htmlToSend = template(replacements);
+
+    let generatedHTML = generateHTML();
+
+    let htmlToSend = template(user.order);
     let mailOptions = {
       from: '"ACME Shop"<acmeshop@list.ru>', // sender email address
       to: user.email, // receiver email address
       subject: "Your order from ACME", // email subject
-      html: htmlToSend // email html template
+      html: `
+      <h3>Thanks for your order at ACME Shop!</h3>
+
+      <p><strong>Here is what you purchased:</strong></p>
+
+      ${generatedHTML}
+
+      <p>Come back soon!</p>
+      `, // email html template
+
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -166,7 +186,6 @@ router.route('/send-email').post((req, res) => {
         return console.log(error);
       }
       console.log(`E-mail is sent to ${user.email}, message id is ${info.messageId}`);
-      res.send(`E-mail is sent to ${user.email}, message id is ${info.messageId}`);
     });
   });
 

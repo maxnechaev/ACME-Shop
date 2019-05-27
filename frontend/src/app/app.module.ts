@@ -33,6 +33,7 @@ import { CartService } from './cart.service';
 import { ModalWindowComponent } from './components/modal-window/modal-window.component';
 import { CartComponent } from './components/cart/cart.component';
 import { SendEmailComponent } from './components/send-email/send-email.component';
+import './components/send-email/send-email-template.html';
 
 
 const routes: Routes = [
