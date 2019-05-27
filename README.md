@@ -26,11 +26,28 @@ After installation is complete start the server:
 
 `ng serve -o`
 
+
+Result can look something like this:
+
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img1.png)
+
 In this app you can:
+- view product details,
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img2.png)
+
+- add and remove products from/to cart,
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img3.png)
+
 - add new products to warehouse,
-- edit warehouse and each product,
-- add products to cart,
-- remove from cart, and, finally,
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img4.png)
+
+- edit warehouse,
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img5.png)
+
+- edit each product,
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img6.png)
+
 - send the order by email.
+!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img7.png)
 
 P.S. A generic email account is temporarily created for simplicity.  
