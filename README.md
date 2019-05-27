@@ -1,10 +1,10 @@
-# ACME Shop sample app build on MEAN stack
+## ACME Shop sample app built on MEAN stack
 
-You will need 2 servers and MongoDB running for this application.
+You will have 2 servers and MongoDB running for this application.
 
 `git clone git@github.com:maxnechaev/ACME-Shop.git`
 
-## Run the following command in one terminal window
+### Run the following command in one terminal window
 
 `cd ACME-Shop/backend`
 
@@ -14,15 +14,13 @@ After installation is complete start the server:
 
 `npm run dev`
 
-## Run the following command in the second terminal window
+### Run the following command in the second terminal window
 
 `cd ACME-Shop/frontend`
 
 `npm i`
 
 After installation is complete start the server:
-
-`npm run dev`
 
 `ng serve -o`
 
