@@ -28,18 +28,18 @@ After installation is complete start the server:
 
 
 Result can look something like this:
-
-!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img1.png)
+https://github.com/maxnechaev/ACME-Shop/blob/master/frontend/src/assets/screenshots/img7.png
+!["ACME-Shop"](https://github.com/maxnechaev/ACME-Shop/blob/master/frontend/src/assets/screenshots/img1.png)
 
 In this app you can:
 - view product details,
-!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img2.png)
+!["ACME-Shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img2.png)
 
 - add and remove products from/to cart,
-!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img3.png)
+!["ACME-Shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img3.png)
 
 - add new products to warehouse,
-!["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img4.png)
+!["ACME-Shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img4.png)
 
 - edit warehouse,
 !["acme-shop"](https://github.com/maxnechaev/ACME-Shop/frontend/src/assets/screenshots/img5.png)
